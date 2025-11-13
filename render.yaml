@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vscodium
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: PUID
+        value: "0"
+      - key: PGID
+        value: "0"
+      - key: TZ
+        value: "Etc/UTC"
+    ports:
+      - 3000
+      - 3001
