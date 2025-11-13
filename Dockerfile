@@ -2,8 +2,8 @@
 FROM lscr.io/linuxserver/vscodium:latest
 
 # Set environment variables (you can override them in Render Dashboard)
-ENV PUID=1000
-ENV PGID=1000
+ENV PUID=0
+ENV PGID=0
 ENV TZ=Etc/UTC
 
 # Copy the startup script
