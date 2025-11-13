@@ -1,17 +1,17 @@
 # Dockerfile
 FROM lscr.io/linuxserver/vscodium:latest
 
-# Set environment variables (you can override them in Render Dashboard)
+# Set environment variables (these can be overridden in Render)
 ENV PUID=0
 ENV PGID=0
 ENV TZ=Etc/UTC
 
-# Copy the startup script
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
-
-# Expose the same ports used in your compose file
+# Expose the ports (same as your docker-compose.yml)
 EXPOSE 3000 3001
 
-# Start the container
-CMD ["/start.sh"]
+# Create the config directory
+RUN mkdir -p /config
+
+# Default command to run VSCodium
+CMD ["/usr/bin/vscodium", "--no-sandbox", "--remote=0.0.0.0:3000", "--user-data-dir=/config"]
+
